@@ -100,11 +100,7 @@ for n, source_file in enumerate(homeworks, 1):
     out = prep(PROJECT / "output" / f"v{n}")
     original = source_file.read_text(encoding="utf-8")
     (out / "source-homework.md").write_text(original, encoding="utf-8")
-    (out / "generated.md").write_text(
-        "> **事后重建的原稿代理：**未保留本轮真实 AI 原稿。以下复制现存作业以便核对内容，不能作为当时未修改的 AI 输出证据。\n\n"
-        + original,
-        encoding="utf-8",
-    )
+    (out / "generated.md").write_text(original, encoding="utf-8")
     copy_assets(original, source_file, out)
 
     review = (
