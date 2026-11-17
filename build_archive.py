@@ -7,6 +7,11 @@ PROJECT = HOME / "Desktop" / "预习作业-skill迭代"
 SOURCE = HOME / "Desktop" / "linux作业"
 SKILLS = HOME / ".codex" / "skills"
 
+def previous_skill(n):
+    installed = SKILLS / f"linux-homework-md-v{n}" / "SKILL.md"
+    archived = PROJECT / "source-skills-backup" / f"linux-homework-md-v{n}" / "SKILL.md"
+    return installed if installed.is_file() else archived
+
 first = SOURCE / "Linux作业1-20262803李令琪.md"
 second = SOURCE / "20262803-李令琪-Linux命令实践2.md"
 homeworks = [first, second]
@@ -51,7 +56,7 @@ review_questions = {
     13: "核对 ZIP 测试仅限自建样本；捕获全部异常可能掩盖文件或格式错误。",
 }
 
-skill10 = (SKILLS / "linux-homework-md-v10" / "SKILL.md").read_text(encoding="utf-8")
+skill10 = previous_skill(10).read_text(encoding="utf-8")
 additions = {
     11: "\n## 教材阅读与概念对照\n\n- 阅读型作业写明实际阅读的章节、课程视频和参考资料；把教材结论、官方资料、个人理解及计划中的验证分开。未运行的命令只作为验证方案。\n- 比较虚拟机、容器等概念时，先明确隔离边界、共享的内核或硬件、资源控制位置和适用条件；不要由使用 QEMU 推断一定启用了 KVM。\n",
     12: "\n## 安全机制分析\n\n- 先说明保护目标，再写主体、对象、操作、凭据和适用策略；文件内容权限与父目录中的删除权限应分别分析。\n- 区分 DAC、Capabilities、seccomp、LSM、namespace、cgroup 与 TEE 的作用边界；不能由部署某一机制就断言系统整体安全。有关硬件和软件依赖的实践未完成时只写待验证方案。\n",
@@ -80,7 +85,7 @@ def copy_assets(text, source_file, output_dir):
 for n, source_file in enumerate(homeworks, 1):
     skill_dir = prep(PROJECT / "skill" / f"v{n}")
     if n <= 10:
-        content = (SKILLS / f"linux-homework-md-v{n}" / "SKILL.md").read_text(encoding="utf-8")
+        content = previous_skill(n).read_text(encoding="utf-8")
     else:
         content = skill10.replace("linux-homework-md-v10", f"linux-homework-md-v{n}")
         content = re.sub(r"description:.*\n", f"description: 根据前{n}次 Linux 作业整理的中文 Markdown 写作方法，涵盖本轮课程主题；用户指定 v{n} 时使用。\n", content, count=1)
