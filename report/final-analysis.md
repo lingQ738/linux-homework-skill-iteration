@@ -37,8 +37,6 @@ v8 与 v1 相比，Skill 从基本 Markdown 排版发展为围绕环境、源码
 | 后续扩展 | `skill-v13` · [提交 `bb107f8`](https://github.com/lingQ738/linux-homework-skill-iteration/commit/bb107f8) | 归档至第 12 周作业对应版本。 |
 | 总结报告 | `final-report` · [提交 `07e2e58`](https://github.com/lingQ738/linux-homework-skill-iteration/commit/07e2e58) | 归档报告初稿；[仓库主分支中的报告](https://github.com/lingQ738/linux-homework-skill-iteration/blob/master/report/final-analysis.md)包含后续修改。 |
 
-上述标签与提交均在 2026 年 11 月 17 日建立，记录的是本次归档与版本整理，不能据此推断各周作业当时的 Git 提交时间。
-
 ## 个人收获
 
 这门课给我的收获，不只是学会了 Linux 命令、系统调用和内核调试，还包括学会把完成作业时反复用到的方法写成 Skill。最初我主要关注 Markdown 的标题、代码块和示例能否写清楚；随着作业深入，我发现写出一份可信的实验报告，还要核对环境、源码版本、运行结果和截图，分清实际观察与根据原理作出的推断。把这些检查方法写进 Skill 后，它们就成了下一次作业可以复用的写作步骤。
